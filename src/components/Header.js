@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import ThemeToggle from './ThemeToggle';
 
 /**
- * Header component displaying the app title, subtitle, and live date/time.
+ * Header component displaying the app title, subtitle, live date/time,
+ * and a dark-mode toggle button.
  */
-const Header = () => {
+const Header = ({ isDark, onToggleTheme }) => {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -47,9 +49,12 @@ const Header = () => {
             <p className="header-subtitle">Real-time Product Analytics</p>
           </div>
         </div>
-        <div className="header-right" aria-label="Current date and time">
-          <span className="header-date">{formatDate(currentTime)}</span>
-          <span className="header-time">{formatTime(currentTime)}</span>
+        <div className="header-right" aria-label="Current date, time, and settings">
+          <div className="header-datetime">
+            <span className="header-date">{formatDate(currentTime)}</span>
+            <span className="header-time">{formatTime(currentTime)}</span>
+          </div>
+          <ThemeToggle isDark={isDark} onToggle={onToggleTheme} />
         </div>
       </div>
     </header>
