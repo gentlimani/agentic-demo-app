@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import MetricsCard from './components/MetricsCard';
@@ -45,10 +45,37 @@ const metrics = [
   },
 ];
 
+const DARK_MODE_KEY = 'producthub-dark-mode';
+
+function useDarkMode() {
+  const [isDark, setIsDark] = useState(() => {
+    try {
+      const stored = localStorage.getItem(DARK_MODE_KEY);
+      if (stored !== null) return stored === 'true';
+    } catch {
+      /* localStorage unavailable (e.g. private browsing) — default to light */
+    }
+    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(DARK_MODE_KEY, String(isDark));
+    } catch {
+      /* ignore storage errors */
+    }
+  }, [isDark]);
+
+  const toggle = () => setIsDark((prev) => !prev);
+  return [isDark, toggle];
+}
+
 function App() {
+  const [isDark, toggleDarkMode] = useDarkMode();
+
   return (
-    <div className="app">
-      <Header />
+    <div className={`app${isDark ? ' dark' : ''}`}>
+      <Header isDark={isDark} onToggleDarkMode={toggleDarkMode} />
 
       <main className="main-content">
         {/* KPI Metrics */}
