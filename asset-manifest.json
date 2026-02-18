@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/agentic-demo-app/static/css/main.f914e596.css",
-    "main.js": "/agentic-demo-app/static/js/main.95f2a74e.js",
+    "main.css": "/agentic-demo-app/static/css/main.18780fab.css",
+    "main.js": "/agentic-demo-app/static/js/main.3d767ded.js",
     "index.html": "/agentic-demo-app/index.html",
-    "main.f914e596.css.map": "/agentic-demo-app/static/css/main.f914e596.css.map",
-    "main.95f2a74e.js.map": "/agentic-demo-app/static/js/main.95f2a74e.js.map"
+    "main.18780fab.css.map": "/agentic-demo-app/static/css/main.18780fab.css.map",
+    "main.3d767ded.js.map": "/agentic-demo-app/static/js/main.3d767ded.js.map"
   },
   "entrypoints": [
-    "static/css/main.f914e596.css",
-    "static/js/main.95f2a74e.js"
+    "static/css/main.18780fab.css",
+    "static/js/main.3d767ded.js"
   ]
 }
