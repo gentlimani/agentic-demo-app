@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import Header from './components/Header';
 import MetricsCard from './components/MetricsCard';
@@ -46,21 +46,9 @@ const metrics = [
 ];
 
 function App() {
-  const [isDark, setIsDark] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved === 'dark';
-  });
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  }, [isDark]);
-
-  const toggleTheme = () => setIsDark((prev) => !prev);
-
   return (
     <div className="app">
-      <Header isDark={isDark} onToggleTheme={toggleTheme} />
+      <Header />
 
       <main className="main-content">
         {/* KPI Metrics */}
